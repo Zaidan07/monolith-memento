@@ -1,0 +1,537 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Runic&display=swap");
+
+.novaria-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  gap: 30px;
+  align-items: start;
+}
+.novaria-layout h2 {
+  font-size: 24px;
+  font-weight: 750;
+  letter-spacing: -0.04em;
+  margin-bottom: 12px;
+}
+.novaria-fields,
+.novaria-card {
+  display: grid;
+  gap: 10px;
+}
+.novaria-fields {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.novaria-field {
+  min-width: 0;
+}
+.novaria-field:last-child {
+  grid-column: 1 / -1;
+}
+.novaria-field label,
+.novaria-card dt {
+  display: block;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 750;
+  margin-bottom: 5px;
+}
+.novaria-field input,
+.novaria-field select {
+  width: 100%;
+  min-height: 40px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 9px;
+  padding: 7px 10px;
+}
+.novaria-field select:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+.novaria-card {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  padding: 12px;
+  background: var(--accent-surface);
+  border-radius: 15px;
+}
+.novaria-card > div {
+  min-width: 0;
+  min-height: 78px;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: var(--surface);
+}
+.novaria-card dd {
+  overflow-wrap: anywhere;
+  font-size: 14px;
+  font-weight: 650;
+}
+.novaria-trekker {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px;
+}
+.novaria-trekker .trekker-art {
+  width: 32px;
+  height: 32px;
+  border-radius: 5px;
+}
+.novaria-drag-picker {
+  margin-top: 12px;
+  color: var(--accent);
+  font-size: 13px;
+}
+.novaria-drag-picker summary {
+  cursor: pointer;
+}
+.novaria-drag-picker ul {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  max-height: 110px;
+  overflow: auto;
+  margin-top: 5px;
+}
+.novaria-drag-picker button {
+  background: var(--surface);
+  border-radius: 5px;
+  padding: 4px 6px;
+  border: 1px solid var(--border);
+  cursor: grab;
+}
+.novaria-shared {
+  max-width: 800px;
+  margin-top: 24px;
+}
+@media (max-width: 800px) {
+  .novaria-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 13px;
+  }
+}
+@media (max-width: 420px) {
+  .novaria-fields,
+  .novaria-card {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .novaria-drag-picker {
+    display: none;
+  }
+}
+
+.novaria-game-page {
+  --ink: #203963;
+  --muted: #476181;
+  --accent: #2d4f85;
+  --field: #fff;
+  --surface: #f3f8fc;
+  --border: #afc0d2;
+  color: var(--ink);
+  color-scheme: light;
+  background: #e5eef5;
+  padding-inline: clamp(12px, 4vw, 42px);
+  border-radius: 16px;
+  margin-block: 18px;
+}
+.novaria-profile-page,
+.novaria-shared {
+  max-width: 880px;
+  margin-inline: auto;
+}
+.novaria-profile-page .novaria-layout {
+  margin-top: 26px;
+}
+.guild-profile {
+  padding: clamp(10px, 2.5vw, 24px);
+  background:
+    linear-gradient(145deg, #315a8270, #b8dbb36b),
+    url("/art/novaria.webp") center / cover;
+  border-radius: 14px;
+}
+.guild-bar,
+.guild-core-title {
+  color: #fff;
+  background: #203967;
+}
+.guild-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 9px;
+  border-radius: 12px 12px 0 0;
+  padding: 7px 12px;
+}
+.guild-bar > :first-child {
+  min-width: 0;
+  max-width: 42%;
+  font-family: Georgia, serif;
+  font-variant: small-caps;
+  letter-spacing: 0.08em;
+  font-size: clamp(20px, 3vw, 30px);
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+.guild-bar input {
+  color: inherit;
+  background: #182f57;
+}
+.guild-bar input::placeholder {
+  color: #c4d3e6;
+}
+.guild-uid {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  min-width: 0;
+  color: #dce9fa;
+}
+.guild-uid label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+.guild-uid input {
+  width: min(14ch, 25vw);
+  padding: 2px 4px;
+}
+.guild-uid button {
+  display: grid;
+  place-items: center;
+  min-width: 28px;
+  min-height: 30px;
+}
+.guild-player,
+.guild-motto,
+.guild-core {
+  background: #eff5f7eb;
+  padding: 12px;
+}
+.guild-identity {
+  display: grid;
+  grid-template-columns: clamp(65px, 15vw, 120px) minmax(0, 1fr);
+  align-items: start;
+  gap: 10px;
+}
+.guild-avatar {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  padding: 4px;
+  background: #fff;
+  border: 1px solid #96aac2;
+  border-radius: 7px;
+}
+.guild-avatar .trekker-art {
+  width: 100%;
+  height: 100%;
+}
+.guild-level {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  background: #fff;
+  border: 2px solid #799bbb;
+  border-radius: 16px;
+  padding: 2px 5px;
+  font-size: 12px;
+  font-weight: 800;
+}
+.guild-identity-fields {
+  display: grid;
+  gap: 5px;
+  overflow-wrap: anywhere;
+}
+.guild-identity-fields > :first-child {
+  font-size: clamp(18px, 3.5vw, 30px);
+  font-weight: 800;
+}
+.guild-identity-fields label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #e7eff5;
+  border: 1px solid #c7d4e4;
+  padding-inline: 6px;
+}
+.guild-identity-fields input {
+  width: 100%;
+  min-width: 0;
+}
+.guild-identity-fields svg {
+  flex: none;
+  color: #527aa6;
+}
+.guild-identity-fields .guild-account-level {
+  font-size: 12px;
+  white-space: nowrap;
+}
+.guild-account-level input {
+  max-width: 45px;
+}
+.guild-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+.guild-badges > * {
+  max-width: 100%;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #fff;
+  background: linear-gradient(120deg, #245c9a, #4a6abd);
+  border: 1px solid #83c2ed;
+  border-radius: 5px;
+  padding: 5px 9px;
+  overflow-wrap: anywhere;
+}
+.guild-badges input::placeholder {
+  color: #dbe9ff;
+}
+.guild-motto {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+.guild-motto :is(p, textarea) {
+  flex: 1;
+  min-width: 0;
+  min-height: 44px;
+  padding: 7px;
+  background: #fff;
+  border: 1px solid #bacbda;
+  overflow-wrap: anywhere;
+}
+.guild-motto button {
+  border: 1px solid #6883a7;
+  border-radius: 30px;
+  padding: 4px 13px;
+  background: #fff;
+  font-weight: 750;
+}
+.guild-core-title {
+  margin-top: 10px;
+  margin-bottom: 6px;
+  padding: 4px 10px;
+  font-size: clamp(14px, 3vw, 23px);
+  font-weight: 750;
+}
+.guild-core {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(4px, 1.5vw, 14px);
+  border-radius: 5px;
+  padding: clamp(5px, 1.5vw, 12px);
+}
+.guild-core li {
+  min-width: 0;
+}
+.guild-core-portrait {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: #a8bed7;
+  border: 2px solid #77cbe3;
+  border-bottom-color: #a781e3;
+  border-radius: 5px;
+  box-shadow: 0 3px 5px #20396740;
+}
+.guild-core-full-art {
+  object-fit: contain;
+  object-position: center;
+}
+.guild-core-element {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  display: grid;
+  place-items: center;
+  padding: 2px;
+  border-radius: 5px;
+  color: var(--element-bg);
+  background: var(--element);
+}
+.guild-core-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 2px 4px;
+  padding: 4px;
+  background: #142849dc;
+  color: #fff;
+  font-size: clamp(9px, 2vw, 16px);
+  overflow-wrap: anywhere;
+}
+.guild-core-level {
+  margin-right: auto;
+  color: #ffdf77;
+  font-weight: 800;
+}
+.guild-core-fields {
+  display: grid;
+  gap: 4px;
+  margin-top: 5px;
+}
+.guild-core-fields :is(select, input) {
+  width: 100%;
+  min-width: 0;
+  background: #fff;
+  border: 1px solid #afc0d2;
+  padding: 4px;
+  font-size: 11px;
+}
+.guild-about {
+  margin-top: 16px;
+}
+.guild-about h2 {
+  font-size: 1.45rem;
+  font-weight: 750;
+  margin-bottom: 7px;
+}
+.guild-profile :is(input, textarea, select, button):focus-visible {
+  outline: 2px solid #567cbd;
+  outline-offset: 1px;
+}
+@media (max-width: 360px) {
+  .guild-uid {
+    font-size: 12px;
+  }
+  .guild-bar {
+    padding-inline: 6px;
+  }
+}
+.novaria-game-page .novaria-card {
+  background: #d7e5f2;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.novaria-game-page .novaria-card > div,
+.novaria-game-page .novaria-field :is(input, select) {
+  background: #fff;
+}
+.novaria-game-page .novaria-field label,
+.novaria-game-page .novaria-card dt {
+  color: #2c4a77;
+}
+
+.guild-rune-name {
+  display: grid;
+  gap: 3px;
+  justify-items: start;
+}
+.guild-rune-name input {
+  max-width: 100%;
+  font: 14px sans-serif;
+  padding: 3px 6px;
+}
+.guild-runes {
+  font-family: "Noto Sans Runic", sans-serif;
+  font-variant: normal;
+  line-height: 1.2;
+}
+.guild-level {
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  width: clamp(29px, 6vw, 50px);
+  aspect-ratio: 1;
+  top: -10%;
+  left: -10%;
+  padding: 0;
+  border-radius: 50%;
+  color: #182f4b;
+  background: radial-gradient(circle, #fff 55%, #d2e4f1 65%);
+  border: 2px solid #7696b2;
+  line-height: 1;
+  box-shadow: 0 2px 4px #132f5666;
+}
+.guild-level strong {
+  font-size: clamp(13px, 3vw, 24px);
+}
+.guild-level small {
+  font-size: 9px;
+}
+.guild-identity-fields > label,
+.guild-title-display {
+  background: #f9fbfc;
+  border: 1px solid #c7d4e4;
+}
+.guild-title-display {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 6px;
+  text-align: left;
+}
+.guild-title-parts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+}
+.guild-title-parts select,
+.guild-honor input {
+  min-width: 0;
+  width: 100%;
+  background: white;
+  border: 1px solid #afc0d2;
+  padding: 4px;
+  color: #203963;
+}
+.guild-badges .guild-honor {
+  display: grid;
+  min-width: 0;
+  width: min(100%, 320px);
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+.guild-honor-banner {
+  display: grid;
+  place-items: center;
+  min-height: 49px;
+  overflow: hidden;
+  text-align: center;
+  border: 1px solid #87b9ee;
+  border-radius: 6px;
+  color: white;
+  background: linear-gradient(120deg, #183f79, #5891de 60%, #294f98);
+}
+.guild-honor-banner img {
+  width: 100%;
+  height: auto;
+}
+.guild-honor-banner strong {
+  padding: 5px;
+  text-shadow: 0 1px 2px #12306a;
+}
+.guild-core-portrait {
+  aspect-ratio: 3 / 4;
+}
+.guild-core-stripe {
+  position: absolute;
+  bottom: 0;
+  inset-inline: 0;
+  height: 10px;
+}
+.guild-core-caption {
+  bottom: 10px;
+}
+.guild-core-element {
+  transform: rotate(45deg);
+  top: 6px;
+  left: 6px;
+}
+.guild-core-element > :is(svg, img) {
+  transform: rotate(-45deg);
+}

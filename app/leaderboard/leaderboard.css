@@ -1,0 +1,24 @@
+.leaderboard-title { display: flex; align-items: baseline; gap: 14px; }
+.leaderboard-title svg { color: var(--accent); flex: none; width: clamp(22px, 4vw, 40px); height: auto; }
+.leaderboard-filters { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 9px; }
+.leaderboard-filters a { padding: 7px 12px; border: 1px solid var(--border); border-radius: 9px; background: var(--surface); font-size: 14px; font-weight: 700; }
+.leaderboard-filters a:hover { border-color: var(--accent); }
+.leaderboard-filters a[aria-current] { background: var(--element-bg, var(--accent-surface)); color: var(--element, var(--accent)); border-color: var(--element, var(--accent)); }
+.leaderboard-results, .leaderboard-notice { margin-top: 20px; }
+.leaderboard-total { margin-bottom: 7px; font-size: 14px; color: var(--muted); }
+.leaderboard-results table { width: 100%; border-collapse: separate; border-spacing: 0 5px; text-align: left; }
+.leaderboard-results thead th { padding: 4px 12px; color: var(--muted); font-size: 13px; }
+.leaderboard-results tbody :is(th, td) { padding: 8px 12px; background: var(--surface); border-block: 1px solid var(--border); }
+.leaderboard-results tr > :first-child { width: 1%; }
+.leaderboard-results tbody tr > :first-child { border-left: 1px solid var(--border); border-radius: 10px 0 0 10px; }
+.leaderboard-results tr > :last-child { text-align: right; font-variant-numeric: tabular-nums; }
+.leaderboard-results tbody tr > :last-child { border-right: 1px solid var(--border); border-radius: 0 10px 10px 0; font-weight: 800; }
+.leaderboard-place { display: grid; place-items: center; min-width: 30px; min-height: 30px; color: var(--muted); font-weight: 800; }
+[data-placement="1"] .leaderboard-place { background: #473626; color: #ffdb94; border-radius: 8px; }
+.leaderboard-trekker { display: flex; align-items: center; gap: 9px; }
+.leaderboard-trekker .trekker-art { width: 40px; height: 40px; flex: none; border-radius: 8px; }
+.leaderboard-trekker small { display: block; color: var(--element, var(--muted)); font-weight: 650; }
+@media (max-width: 400px) {
+  .leaderboard-title { gap: 7px; }
+  .leaderboard-results tbody :is(th, td) { padding-inline: 7px; }
+}

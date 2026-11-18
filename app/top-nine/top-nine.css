@@ -1,0 +1,19 @@
+.top-nine-layout { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 32px; align-items: start; }
+.top-nine-board { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.top-nine-board li { position: relative; min-width: 0; min-height: 132px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; padding: 12px 4px 7px; background: var(--surface); border: 1px solid var(--border); border-top: 3px solid var(--element, var(--accent)); border-radius: 12px; text-align: center; }
+.top-nine-board li[draggable="true"] { cursor: grab; }
+.top-nine-rank { position: absolute; top: 5px; left: 7px; color: var(--element, var(--accent)); font-size: 14px; font-weight: 800; }
+.top-nine-board strong, .top-nine-empty { overflow-wrap: anywhere; font-size: 12px; }
+.top-nine-empty { color: var(--muted); }
+.top-nine-board .trekker-art { width: 50px; height: 50px; }
+.top-nine-controls { display: flex; flex-wrap: wrap; justify-content: center; gap: 1px; }
+.top-nine-controls button { display: grid; place-items: center; width: 27px; height: 30px; border-radius: 6px; color: var(--accent); }
+.top-nine-controls button:hover:not(:disabled) { background: var(--accent-surface); }
+.top-nine-roster { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.top-nine-shared { max-width: 640px; margin-block: 24px; }
+@media (max-width: 800px) {
+  .top-nine-layout { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+}
+@media (max-width: 390px) {
+  .top-nine-roster { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}

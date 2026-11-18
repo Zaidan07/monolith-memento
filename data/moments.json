@@ -1,0 +1,248 @@
+[
+  {
+    "slug": "allie",
+    "name": "Allie",
+    "element": "Aqua",
+    "grade": 5
+  },
+  {
+    "slug": "amber",
+    "name": "Amber",
+    "element": "Ignis",
+    "grade": 4
+  },
+  {
+    "slug": "ann",
+    "name": "Ann",
+    "element": "Ventus",
+    "grade": 4
+  },
+  {
+    "slug": "canace",
+    "name": "Canace",
+    "element": "Ventus",
+    "grade": 4
+  },
+  {
+    "slug": "caramel",
+    "name": "Caramel",
+    "element": "Umbra",
+    "grade": 4
+  },
+  {
+    "slug": "chaton",
+    "name": "Chaton",
+    "element": "Ignis",
+    "grade": 5
+  },
+  {
+    "slug": "chitose",
+    "name": "Chitose",
+    "element": "Aqua",
+    "grade": 5
+  },
+  {
+    "slug": "chixia",
+    "name": "Chixia",
+    "element": "Ignis",
+    "grade": 5
+  },
+  {
+    "slug": "coronis",
+    "name": "Coronis",
+    "element": "Umbra",
+    "grade": 4
+  },
+  {
+    "slug": "cosette",
+    "name": "Cosette",
+    "element": "Umbra",
+    "grade": 4
+  },
+  {
+    "slug": "donna",
+    "name": "Donna",
+    "element": "Aqua",
+    "grade": 5
+  },
+  {
+    "slug": "eleanor",
+    "name": "Eleanor",
+    "element": "Ventus",
+    "grade": 5
+  },
+  {
+    "slug": "firefly",
+    "name": "Firefly",
+    "element": "Lux",
+    "grade": 5
+  },
+  {
+    "slug": "firenze",
+    "name": "Firenze",
+    "element": "Umbra",
+    "grade": 5
+  },
+  {
+    "slug": "firstlight-noya",
+    "name": "Firstlight Noya",
+    "element": "Lux",
+    "grade": 5
+  },
+  {
+    "slug": "flora",
+    "name": "Flora",
+    "element": "Ignis",
+    "grade": 4
+  },
+  {
+    "slug": "freesia",
+    "name": "Freesia",
+    "element": "Aqua",
+    "grade": 5
+  },
+  {
+    "slug": "fuyuka",
+    "name": "Fuyuka",
+    "element": "Ignis",
+    "grade": 5
+  },
+  {
+    "slug": "gerie",
+    "name": "Gerie",
+    "element": "Terra",
+    "grade": 5
+  },
+  {
+    "slug": "iris",
+    "name": "Iris",
+    "element": "Aqua",
+    "grade": 4
+  },
+  {
+    "slug": "jinglin",
+    "name": "Jinglin",
+    "element": "Lux",
+    "grade": 4
+  },
+  {
+    "slug": "kasimira",
+    "name": "Kasimira",
+    "element": "Ignis",
+    "grade": 4
+  },
+  {
+    "slug": "laru",
+    "name": "Laru",
+    "element": "Lux",
+    "grade": 4
+  },
+  {
+    "slug": "leafia",
+    "name": "Leafia",
+    "element": "Terra",
+    "grade": 5
+  },
+  {
+    "slug": "minova",
+    "name": "Minova",
+    "element": "Lux",
+    "grade": 5
+  },
+  {
+    "slug": "mistique",
+    "name": "Mistique",
+    "element": "Umbra",
+    "grade": 5
+  },
+  {
+    "slug": "nanoha",
+    "name": "Nanoha",
+    "element": "Ventus",
+    "grade": 5
+  },
+  {
+    "slug": "nazuka",
+    "name": "Nazuka",
+    "element": "Ventus",
+    "grade": 5
+  },
+  {
+    "slug": "nazuna",
+    "name": "Nazuna",
+    "element": "Terra",
+    "grade": 5
+  },
+  {
+    "slug": "noya",
+    "name": "Noya",
+    "element": "Ventus",
+    "grade": 4
+  },
+  {
+    "slug": "otoha",
+    "name": "Otoha",
+    "element": "Umbra",
+    "grade": 5
+  },
+  {
+    "slug": "ridge",
+    "name": "Ridge",
+    "element": "Terra",
+    "grade": 4
+  },
+  {
+    "slug": "shia",
+    "name": "Shia",
+    "element": "Lux",
+    "grade": 5
+  },
+  {
+    "slug": "shimiao",
+    "name": "Shimiao",
+    "element": "Aqua",
+    "grade": 4
+  },
+  {
+    "slug": "snowish-laru",
+    "name": "Snowish Laru",
+    "element": "Ignis",
+    "grade": 5
+  },
+  {
+    "slug": "sparkla",
+    "name": "Sparkla",
+    "element": "Terra",
+    "grade": 5
+  },
+  {
+    "slug": "springseek-coronis",
+    "name": "Springseek Coronis",
+    "element": "Terra",
+    "grade": 5
+  },
+  {
+    "slug": "suntide-willow",
+    "name": "Suntide Willow",
+    "element": "Aqua",
+    "grade": 5
+  },
+  {
+    "slug": "teresa",
+    "name": "Teresa",
+    "element": "Aqua",
+    "grade": 4
+  },
+  {
+    "slug": "tilia",
+    "name": "Tilia",
+    "element": "Lux",
+    "grade": 4
+  },
+  {
+    "slug": "wraith",
+    "name": "Wraith",
+    "element": "Ventus",
+    "grade": 5
+  }
+]

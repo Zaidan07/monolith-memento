@@ -1,0 +1,50 @@
+.tool-card { padding: 0; overflow: hidden; }
+.tool-card-copy { position: relative; padding: 16px 19px 20px; }
+.tool-preview {
+  display: grid;
+  place-items: center;
+  height: 180px;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 85%, var(--tile), var(--field) 82%);
+  border-bottom: 1px solid var(--border);
+  color: var(--icon);
+}
+.preview-portrait, .tool-preview .trekker-art {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: var(--element-bg, var(--tile));
+  color: var(--element, var(--icon));
+  border-radius: 4px;
+  font-size: inherit;
+  font-weight: 750;
+}
+.tool-preview .trekker-art img { width: 100%; height: 100%; object-fit: cover; }
+.preview-fan, .preview-comparison { display: flex; align-items: center; justify-content: center; }
+.preview-fan > div { width: 76px; height: 110px; padding: 4px; background: var(--surface-raised); border: 1px solid var(--icon); border-radius: 9px; box-shadow: 0 8px 20px #090c1b9e; }
+.preview-fan > div:first-child { transform: rotate(-12deg) translateX(8px); }
+.preview-fan > div:nth-child(2) { transform: translateY(-6px); z-index: 1; }
+.preview-fan > div:last-child { transform: rotate(12deg) translateX(-8px); }
+.preview-bingo-grid, .preview-top-grid, .preview-profile, .preview-ranking { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 6px; }
+.preview-bingo-grid { display: grid; grid-template-columns: repeat(5, 24px); gap: 3px; font-size: 8px; }
+.preview-bingo-grid > span { height: 24px; display: grid; place-items: center; }
+.preview-top-grid { display: grid; grid-template-columns: repeat(3, 39px); gap: 4px; font-size: 11px; }
+.preview-top-grid > div { position: relative; height: 39px; }
+.preview-top-grid b { position: absolute; bottom: 0; right: 0; padding: 1px 3px; background: #101526e8; color: var(--ink); font-size: 8px; line-height: 1.15; }
+.preview-comparison { gap: 9px; }
+.preview-comparison > div { display: grid; justify-items: center; gap: 6px; width: 83px; padding: 8px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; font-size: 10px; }
+.preview-comparison .preview-portrait { height: 62px; }
+.preview-comparison i, .preview-profile i, .preview-ranking i { display: block; width: 78%; height: 4px; background: currentColor; opacity: .45; border-radius: 20px; }
+.preview-profile { display: flex; gap: 10px; padding: 10px; }
+.preview-profile-grid { display: grid; grid-template-columns: repeat(2, 36px); grid-auto-rows: 36px; gap: 4px; font-size: 10px; }
+.preview-profile-answers { display: grid; gap: 3px; align-content: center; min-width: 87px; font-size: 10px; }
+.preview-profile-answers span { color: var(--muted); font-size: 8px; }
+.preview-ranking { display: grid; justify-items: center; gap: 4px; width: 155px; font-size: 10px; }
+.preview-ranking > div { display: grid; grid-template-columns: 13px 20px 1fr; align-items: center; gap: 6px; width: 100%; padding: 2px 6px; border-radius: 4px; background: var(--surface-raised); }
+.preview-ranking .preview-portrait { height: 20px; font-size: 8px; }
+
+.tool-preview-moments { position: relative; }
+.tool-preview-moments img { object-fit: cover; object-position: center; }
+.tool-preview-moments .moment-image-empty { display: grid; place-items: center; }

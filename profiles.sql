@@ -1,0 +1,21 @@
+-- Apply once in Supabase SQL Editor to allow anonymous users to edit their own entries.
+-- session_id contains a SHA-256 digest of a private browser UUID for this feature.
+begin;
+
+drop policy if exists "profiles update own session" on public.profiles;
+create policy "profiles update own session" on public.profiles
+  for update to anon
+  using (
+    session_id = encode(sha256(convert_to(
+      nullif(current_setting('request.headers', true), '')::jsonb ->> 'x-profile-session',
+      'UTF8'
+    )), 'hex')
+  )
+  with check (
+    session_id = encode(sha256(convert_to(
+      nullif(current_setting('request.headers', true), '')::jsonb ->> 'x-profile-session',
+      'UTF8'
+    )), 'hex')
+  );
+
+commit;

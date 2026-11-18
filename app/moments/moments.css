@@ -1,0 +1,27 @@
+.moments-page .moment-stage { width: min(100%, 740px); }
+.moment-stage > .favorite-player-name { margin-bottom: 14px; }
+.moment-card, .moment-placeholder { position: relative; width: min(100%, 740px); aspect-ratio: 24 / 17; overflow: hidden; border: 1px solid var(--border); border-radius: 16px; background: radial-gradient(ellipse at 45% 42%, #302554, #121a2d 64%); }
+.moment-card > img, .moment-thumb img, .tool-preview-moments img { object-fit: cover; object-position: center; }
+.moment-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; padding: clamp(12px, 4vw, 32px); background: linear-gradient(#0c1022df, transparent 28%, transparent 54%, #0c1022f5); }
+.moment-label { color: #fff; font-weight: 800; letter-spacing: .06em; }
+.moment-rare { color: #ffe5a3; font-size: .85rem; margin-top: 4px; }
+.moment-caption { margin-top: auto; }
+.moment-caption h2 { color: white; font-size: clamp(19px, 4.4vw, 42px); font-weight: 800; line-height: 1.12; overflow-wrap: anywhere; }
+.moment-caption p { display: flex; align-items: center; gap: 5px; font-size: .87rem; margin-top: 5px; }
+.moment-caption img { width: 20px; height: 20px; }
+.moment-placeholder, .moment-image-empty { display: grid; place-content: center; justify-items: center; gap: 9px; color: var(--accent); text-align: center; padding: 12px; }
+.moment-image-empty { position: absolute; inset: 0; }
+.moment-shuffle { animation: moment-glow .42s ease-in-out infinite alternate; }
+@keyframes moment-glow { from { box-shadow: inset 0 0 20px #7166db33; } to { box-shadow: inset 0 0 100px #c3a3ff88; } }
+.moment-stage .moment-card { animation: moment-reveal .3s ease-out; }
+@keyframes moment-reveal { from { opacity: .5; transform: scale(.985); } to { opacity: 1; transform: scale(1); } }
+.moment-collection { margin-top: 30px; }
+.moment-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 175px), 1fr)); gap: 10px; margin-top: 12px; }
+.moment-gallery button { display: grid; gap: 6px; width: 100%; text-align: left; border: 1px solid var(--border); border-radius: 9px; overflow: hidden; padding-bottom: 7px; background: var(--surface); }
+.moment-gallery button > span:last-child { padding-inline: 7px; }
+.moment-thumb { display: block; position: relative; width: 100%; aspect-ratio: 24 / 17; background: var(--field); }
+.moment-collection button[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-surface); }
+.moments-page > .moment-card { margin-top: 14px; }
+@media (prefers-reduced-motion: reduce) {
+  .moment-shuffle, .moment-stage .moment-card { animation: none; }
+}
