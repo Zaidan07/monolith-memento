@@ -5,7 +5,6 @@ import { HeroCarousel } from "../components/hero-carousel"
 import "./hero-carousel.css"
 import "./tool-preview.css"
 import { ToolPreview, type PreviewKind } from "../components/tool-preview"
-import { getToolPreviewRoster } from "../lib/tool-preview-roster"
 import Link from "next/link"
 import { getTrekkerCount } from "../lib/supabase"
 
@@ -22,7 +21,7 @@ const tools = [
 ]
 
 export default async function Home() {
-  const [count, previewRoster] = await Promise.all([getTrekkerCount(), getToolPreviewRoster().catch(() => [])])
+  const count = await getTrekkerCount()
 
   const leafia = findMoment("leafia")
 
@@ -49,7 +48,7 @@ export default async function Home() {
               <Link className={`tool-card ${tone}`} href={href}>
                 {preview === "moments" ? (
                   <div className="tool-preview tool-preview-moments">{leafia && <MomentImage moment={leafia} preview />}</div>
-                ) : <ToolPreview kind={preview} roster={previewRoster} />}
+                ) : <ToolPreview kind={preview} />}
                 <div className="tool-card-copy">
                   <span className="tool-icon"><Icon size={23} aria-hidden="true" /></span>
                   <ArrowUpRight className="tool-arrow" size={19} aria-hidden="true" />

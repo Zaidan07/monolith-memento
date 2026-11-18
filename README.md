@@ -155,3 +155,15 @@ node --env-file=.env.local scripts/sync-moments.mjs --apply
 The roster is in `data/moments.json`. The script verifies the exact English
 Memory Snapshot filenames and uploads them as `<trekker-slug>.png`.
 `--dry-run` checks the wiki files without writing to the bucket.
+
+### Preview kartu Home
+
+Untuk mengunggah enam PNG Disc dan CG dari Stella Sora Wiki ke bucket publik
+`discs`, jalankan perintah berikut dari folder proyek dengan secret key di
+`.env.local`.
+
+```sh
+node --env-file=.env.local scripts/sync-discs.mjs --apply
+```
+
+URL sumber dan nama file tersimpan di `data/disc-previews.json`.
