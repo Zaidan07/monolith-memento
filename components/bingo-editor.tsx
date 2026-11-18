@@ -3,7 +3,7 @@
 import { readPlayerName } from "../lib/player-name"
 
 import { useEffect, useState, type DragEvent } from "react"
-import { Download, Save, Share2, X } from "lucide-react"
+import { Download, Save, Share2, X, ChevronLeft, ChevronRight } from "lucide-react"
 import { publishBingo } from "../app/bingo/actions"
 import { exportBingoPng } from "../lib/bingo-png"
 import { bingoTitle, defaultBingoTitle, randomBingo, center, free, placeTrekker, readBingo, side, type BingoCells } from "../lib/bingo"
@@ -14,6 +14,7 @@ import { TrekkerArt } from "./trekker-art"
 
 const draftKey = "stella-sora-pick:bingo-draft"
 const dragType = "application/x-stella-bingo-trekker"
+const pageSize = 9
 
 export function BingoEditor({ roster }: { roster: Trekker[] }) {
   const [title, setTitle] = useState("")
@@ -23,6 +24,7 @@ export function BingoEditor({ roster }: { roster: Trekker[] }) {
   const [selected, setSelected] = useState(0)
   const [query, setQuery] = useState("")
   const [element, setElement] = useState<Element | "All">("All")
+  const [page, setPage] = useState(0)
   const [ready, setReady] = useState(false)
   const [pending, setPending] = useState<"save" | "share" | "png" | null>(null)
   const [message, setMessage] = useState("")
@@ -101,6 +103,10 @@ export function BingoEditor({ roster }: { roster: Trekker[] }) {
     (element === "All" || trekker.element === element)
     && trekker.name.toLowerCase().includes(query.trim().toLowerCase()))
 
+  const totalPages = Math.ceil(filtered.length / pageSize)
+  const currentPage = Math.min(page, Math.max(0, totalPages - 1))
+  const visible = filtered.slice(currentPage * pageSize, (currentPage + 1) * pageSize)
+
   return (
     <div className="bingo-layout">
       <section className="bingo-workspace" aria-labelledby="bingo-board-heading">
@@ -166,27 +172,69 @@ export function BingoEditor({ roster }: { roster: Trekker[] }) {
           <div className="favorite-filters">
             <label>
               <span className="sr-only">Search Trekkers</span>
-              <input type="search" placeholder="Search Trekkers" value={query} onChange={(event) => setQuery(event.target.value)} />
+              <input
+                type="search"
+                placeholder="Search Trekkers"
+                value={query}
+                onChange={(event) => {
+                  setQuery(event.target.value)
+                  setPage(0)
+                }}
+              />
             </label>
             <div className="element-filters" aria-label="Filter by element">
               {(["All", ...elements] as const).map((filter) => (
-                <button type="button" key={filter} data-element={filter} aria-pressed={filter === element} onClick={() => setElement(filter)}>{filter}</button>
+                <button
+                  type="button"
+                  key={filter}
+                  data-element={filter}
+                  aria-pressed={filter === element}
+                  onClick={() => {
+                    setElement(filter)
+                    setPage(0)
+                  }}
+                >
+                  {filter}
+                </button>
               ))}
             </div>
           </div>
           {filtered.length ? (
-            <ul className="favorite-roster bingo-roster">
-              {filtered.map((trekker) => (
-                <li key={trekker.id} data-element={trekker.element}>
-                  <button className="roster-card" type="button" aria-pressed={cells.includes(trekker.id)}
-                    draggable={!disabled} onDragStart={(event) => startDrag(event, trekker.id)} onClick={() => place(selected, trekker)}>
-                    <TrekkerArt trekker={trekker} />
-                    <strong>{trekker.name}</strong>
-                    <span>{trekker.element}</span>
+            <>
+              <ul className="favorite-roster bingo-roster">
+                {visible.map((trekker) => (
+                  <li key={trekker.id} data-element={trekker.element}>
+                    <button className="roster-card" type="button" aria-pressed={cells.includes(trekker.id)}
+                      draggable={!disabled} onDragStart={(event) => startDrag(event, trekker.id)} onClick={() => place(selected, trekker)}>
+                      <TrekkerArt trekker={trekker} />
+                      <strong>{trekker.name}</strong>
+                      <span>{trekker.element}</span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+              {totalPages > 1 && (
+                <div className="favorite-actions" style={{ justifyContent: "center", marginTop: "1rem" }}>
+                  <button
+                    type="button"
+                    aria-label="Previous page"
+                    disabled={disabled || currentPage === 0}
+                    onClick={() => setPage((p) => Math.max(0, p - 1))}
+                  >
+                    <ChevronLeft size={16} aria-hidden="true" />
                   </button>
-                </li>
-              ))}
-            </ul>
+                  <span>{currentPage + 1} / {totalPages}</span>
+                  <button
+                    type="button"
+                    aria-label="Next page"
+                    disabled={disabled || currentPage >= totalPages - 1}
+                    onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))}
+                  >
+                    <ChevronRight size={16} aria-hidden="true" />
+                  </button>
+                </div>
+              )}
+            </>
           ) : <p className="favorite-notice">No Trekkers match your search.</p>}
         </fieldset>
       </section>

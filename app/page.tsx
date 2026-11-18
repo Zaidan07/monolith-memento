@@ -31,7 +31,7 @@ export default async function Home() {
         <HeroCarousel>
           <div className="hero-copy">
             <p className="hero-label"><Sparkles size={15} aria-hidden="true" /> A Stella Sora fan project</p>
-            <h1 id="hero-title">Novaria,<br /><em>who shall we talk about today?</em></h1>
+            <h1 id="hero-title">Tyrant,<br /><em>want to tell about your day?</em></h1>
             <p className="hero-description">Pick your favorite Trekkers, rank your lineup, and make a piece of Novaria your own.</p>
             <a className="hero-button" href="#tools">Explore tools <ArrowDown size={17} aria-hidden="true" /></a>
           </div>

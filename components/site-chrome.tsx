@@ -1,4 +1,5 @@
 import { ArrowUpRight, Orbit } from "lucide-react"
+import Image from "next/image"
 import Link from "next/link"
 
 export function Header() {
@@ -6,8 +7,9 @@ export function Header() {
     <header className="site-header">
       <div className="shell flex items-center justify-between gap-4">
         <Link className="brand" href="/">
-          <span className="brand-icon"><Orbit size={22} aria-hidden="true" /></span>
-          Stella Sora <strong>Pick</strong>
+          {/* <span className="brand-icon"><Orbit size={22} aria-hidden="true" /></span> */}
+          <Image src="/art/icon.png" width={22} height={22} alt=""/>
+          Monolith <strong>Memento</strong>
         </Link>
         <nav className="flex items-center gap-5 sm:gap-8" aria-label="Main navigation">
           <Link href="/#tools">Tools</Link>

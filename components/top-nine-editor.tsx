@@ -5,7 +5,7 @@ import { PlayerNameField } from "./player-name-field"
 import { readPlayerName } from "../lib/player-name"
 
 import { useEffect, useState, type DragEvent } from "react"
-import { Download, Save, Share2 } from "lucide-react"
+import { Download, Save, Share2, ChevronLeft, ChevronRight } from "lucide-react"
 import { publishRanking } from "../app/top-nine/actions"
 import { getSessionId } from "../lib/browser-session"
 import { moveRank, rankingSize, readRanking } from "../lib/top-nine"
@@ -16,10 +16,12 @@ import { TrekkerArt } from "./trekker-art"
 
 const draftKey = "stella-sora-pick:top-nine-draft"
 const dragType = "application/x-stella-top-nine"
+const pageSize = 9
 
 export function TopNineEditor({ roster }: { roster: Trekker[] }) {
   const [items, setItems] = useState<string[]>([])
   const [query, setQuery] = useState("")
+  const [page, setPage] = useState(0)
   const [ready, setReady] = useState(false)
   const [pending, setPending] = useState<"save" | "share" | "png" | null>(null)
   const [message, setMessage] = useState("")
@@ -92,6 +94,10 @@ export function TopNineEditor({ roster }: { roster: Trekker[] }) {
   const complete = items.length === rankingSize
   const filtered = roster.filter(({ name }) => name.toLowerCase().includes(query.trim().toLowerCase()))
 
+  const totalPages = Math.ceil(filtered.length / pageSize)
+  const currentPage = Math.min(page, Math.max(0, totalPages - 1))
+  const visible = filtered.slice(currentPage * pageSize, (currentPage + 1) * pageSize)
+
   return (
     <div className="top-nine-layout">
       <section aria-labelledby="top-nine-board-heading">
@@ -149,24 +155,55 @@ export function TopNineEditor({ roster }: { roster: Trekker[] }) {
           <div className="favorite-filters">
             <label>
               <span className="sr-only">Search Trekkers</span>
-              <input type="search" placeholder="Search Trekkers" value={query} onChange={(event) => setQuery(event.target.value)} />
+              <input
+                type="search"
+                placeholder="Search Trekkers"
+                value={query}
+                onChange={(event) => {
+                  setQuery(event.target.value)
+                  setPage(0)
+                }}
+              />
             </label>
           </div>
           {filtered.length ? (
-            <ul className="favorite-roster top-nine-roster">
-              {filtered.map((trekker) => {
-                const picked = items.includes(trekker.id)
-                return <li key={trekker.id} data-element={trekker.element}>
-                  <button className="roster-card" type="button" aria-pressed={picked} disabled={picked || complete}
-                    draggable={!disabled && !picked && !complete}
-                    onClick={() => add(trekker)} onDragStart={(event) => drag(event, trekker.id)}>
-                    <TrekkerArt trekker={trekker} />
-                    <strong>{trekker.name}</strong>
-                    <span>{trekker.element}</span>
+            <>
+              <ul className="favorite-roster top-nine-roster">
+                {visible.map((trekker) => {
+                  const picked = items.includes(trekker.id)
+                  return <li key={trekker.id} data-element={trekker.element}>
+                    <button className="roster-card" type="button" aria-pressed={picked} disabled={picked || complete}
+                      draggable={!disabled && !picked && !complete}
+                      onClick={() => add(trekker)} onDragStart={(event) => drag(event, trekker.id)}>
+                      <TrekkerArt trekker={trekker} />
+                      <strong>{trekker.name}</strong>
+                      <span>{trekker.element}</span>
+                    </button>
+                  </li>
+                })}
+              </ul>
+              {totalPages > 1 && (
+                <div className="favorite-actions" style={{ justifyContent: "center", marginTop: "1rem" }}>
+                  <button
+                    type="button"
+                    aria-label="Previous page"
+                    disabled={disabled || currentPage === 0}
+                    onClick={() => setPage((p) => Math.max(0, p - 1))}
+                  >
+                    <ChevronLeft size={16} aria-hidden="true" />
                   </button>
-                </li>
-              })}
-            </ul>
+                  <span>{currentPage + 1} / {totalPages}</span>
+                  <button
+                    type="button"
+                    aria-label="Next page"
+                    disabled={disabled || currentPage >= totalPages - 1}
+                    onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))}
+                  >
+                    <ChevronRight size={16} aria-hidden="true" />
+                  </button>
+                </div>
+              )}
+            </>
           ) : <p className="favorite-notice">No Trekkers match your search.</p>}
         </fieldset>
       </section>
